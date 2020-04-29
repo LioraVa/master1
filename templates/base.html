@@ -1,0 +1,44 @@
+<html>
+<head>
+    <title>CareCenter4U</title>
+    <link rel="stylesheet" type="text/css" href="/static/css/reset.css" />
+    <link rel="stylesheet" type="text/css" href="/static/css/main.css" />
+</head>
+<body>
+    <header>
+        <div class="logo">
+            <a href="/">
+                <img src="/static/img/logo_small.png">
+            </a>
+        </div>
+        <div class="main-menu">
+            <a href="/">Homepage</a>
+            {% if user.is_authenticated and user.citizen %} 
+            	| <a href="{% url "index" %}">Doctor appointment</a> 
+           	 	| Clinics
+           	{% endif %}
+            {% if user.is_authenticated and user.is_superuser %}
+                | <a href="admin/">Admin</a>
+            {% endif %}
+           	{% if user.is_authenticated and user.secretary %} 
+            	| Add
+           	 	| Update
+           	{% endif %}
+        </div>
+        <div class="login-box">
+            {% if user.is_anonymous %}
+                <a href="{% url "login" %}">Login</a> /
+                <a href="{% url "register" %}">Register</a>
+            {% else %}
+                Hello {{ user.first_name }}, <a href="{% url "logout" %}">Logout</a>
+            {% endif %}
+        </div>
+
+    </header>
+    <div class="content">
+        {% block content %}
+            Put your content here
+        {% endblock %}
+    </div>
+</body>
+</html>

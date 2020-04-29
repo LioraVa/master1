@@ -1,0 +1,9 @@
+db.sqlite3
+Pipfile
+Pipfile.lock
+.idea
+.project
+.pydevproject
+*.pyc
+poetry.lock
+pyproject.toml
