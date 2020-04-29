@@ -10,3 +10,10 @@ class Customer(AbstractUser):
     
     citizen = models.BooleanField(default=False)
     secretary = models.BooleanField(default=False)
+
+class Employee(models.Model):
+    # employee_id = models.CharField(max_length=10)
+    employee_id = models.AutoField
+    employee_name = models.CharField(max_length=20)
+    employee_center = models.CharField(max_length=20)
+    employee_phone = models.CharField(max_length=20)
